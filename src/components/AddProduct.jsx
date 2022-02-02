@@ -22,12 +22,12 @@ export default function AddProduct() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const {addProduct, addProductsCart} = React.useContext(AuthContext);
+  const {addProduct, addProductsCart, getProducts} = React.useContext(AuthContext);
 
   const [newProduct, setNewProduct] = React.useState({
      img: "",
      name: "",
-     price: "",
+     price: 0,
      description: "",
      categor: ""
   })
@@ -39,10 +39,11 @@ export default function AddProduct() {
       setNewProduct({
         img: "",
         name: "",
-        price: "",
+        price: 0,
         description: "",
         categor: ""
       })
+      getProducts()
   }
 
   return (

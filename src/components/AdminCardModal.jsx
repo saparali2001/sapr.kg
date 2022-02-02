@@ -3,7 +3,8 @@ import Box from '@mui/material/Box';
 
 import Modal from '@mui/material/Modal';
 import HoverRating from './Stars';
-
+import AuthProvider from '../context/AuthProvider';
+import EditInProduct from "../components/EditInProduct";
 const style = {
   position: 'absolute',
   top: '50%',
@@ -20,6 +21,10 @@ export default function CardModal({product}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [editProduct, setEditProduct] = React.useState(product);
+
+  // const {EditInProduct} = React.useContext(AuthProvider)
 
   return (
     <div>
@@ -44,8 +49,9 @@ export default function CardModal({product}) {
                    <p className='card-modal-description'><strong>Описания:</strong> {product.description}</p>
                    <p><strong>Цена:</strong> {product.price}</p>
                    <div className="admin-card-btns">
-                        <button>Изменить данные</button>
-                        <button className="chenge">Удалить</button>
+                        <EditInProduct product={product} editProduct={editProduct}
+                  setEditProduct={setEditProduct}/>
+                        <button  className="chenge">Удалить</button>
                     </div>
                </div>
           </div>

@@ -12,6 +12,17 @@ code {
     monospace;
 }
 /*  */
+
+.zakaz-btn {
+  text-decoration: none;
+  width: 100px;
+  display: block;
+}
+
+.empty {
+  text-align: center;
+  color: #fff;
+}
 h1 {
   color: #fff;
 }
@@ -222,6 +233,15 @@ body {
   cursor: pointer;
 }
 
+.categor img {
+  border-radius: 50px;
+  transition: 0.5s all ease;
+}
+
+.categor img:hover {
+  box-shadow: 1px 1px 10px rgb(9, 247, 1);
+}
+
 .add-product-btn {
   padding: 5px 20px;
   margin-top: 20px;
@@ -280,7 +300,6 @@ body {
 /* CARD */
 
 .cards {
-  margin-top: 50px;
 }
 
 .main-card {
@@ -331,6 +350,7 @@ body {
 .add-cart,
 .like {
   cursor: pointer;
+  width: 40px;
 }
 
 .card-price {
@@ -419,6 +439,108 @@ body {
 .admin-card-btns {
   display: flex;
   justify-content: space-between;
+}
+
+/*  */
+
+.zakaz-form {
+  height: 160px;
+  overflow: hidden;
+}
+
+.zakaz-form button {
+  position: absolute;
+  /* bottom: 10px;
+  left: 50%; */
+  bottom: -10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: transparent;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+.zakaz-form input {
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  margin-top: 20px;
+}
+
+.total-btn {
+  border: 1px solid transparent;
+  padding: 5px 40px;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: 0.5s all ease;
+}
+
+.total-btn:hover {
+  border: 1px solid #fff;
+  color: #fff;
+  background: transparent;
+}
+
+.total {
+  background: #35383f;
+  padding: 20px;
+  margin-top: 10px;
+  text-align: center;
+  position: sticky;
+  bottom: 0px;
+}
+
+.footer-nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-nav a:hover {
+  color: #14ff00;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.saits {
+  display: flex;
+}
+
+.footer-text {
+  width: 80%;
+  color: #fff;
+}
+
+.sait a {
+  margin-top: 20px;
+  display: block;
+  width: 200px;
+}
+
+.main-saits {
+  display: flex;
+  width: 180px;
+}
+
+.main-saits a img {
+  width: 30px;
+  border-radius: 50px;
+  border: 2px solid transparent;
+}
+
+.main-saits a img:hover {
+  border: 2px solid #14ff00;
+}
+
+.footer {
+  margin-top: 50px;
+  background: #000;
+  padding-top: 30px;
+  padding-bottom: 50px;
 }
 /* ADAP */
 
@@ -577,8 +699,6 @@ body {
     width: 50vh;
   }
 
-  .card-modal-img {
-  }
   .card-modal-img img {
     width: 200px;
     height: 180px;
@@ -587,11 +707,11 @@ body {
     width: 100%;
   }
 
-  .card-modal-content button {
-  }
-  .card-modal-content button:hover {
+  .footer-nav {
+    flex-wrap: wrap;
   }
 
-  .card-modal-description {
+  .saits {
+    display: block;
   }
 }

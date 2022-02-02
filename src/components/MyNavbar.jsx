@@ -6,9 +6,11 @@ import BurgerMenu from './BurgerMenu';
 
 import { AuthContext } from '../context/AuthProvider';
 import Cart from './Cart';
+import { MainContext } from '../context/MainProvider';
 
 const MyNavbar = () => {
     const {user, logout} = React.useContext(AuthContext)
+    const {productsCount} = React.useContext(MainContext)
     return (
         <div className='navbar'>
             <Container>
@@ -42,7 +44,7 @@ const MyNavbar = () => {
                       )
                   }
                     <Link className='cart' to="/cart">
-                       <Cart/>
+                       <Cart productsCount={productsCount}/>
                     </Link>
                     <BurgerMenu className="burger"/>
                    

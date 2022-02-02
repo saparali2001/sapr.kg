@@ -5,6 +5,7 @@ import {auth, firestore} from '../firebase';
 import {addDoc, collection, doc, getDocs, query, where, setDoc,deleteDoc} from 'firebase/firestore'
 
 
+
 export const AuthContext = React.createContext();
 
 
@@ -12,6 +13,7 @@ export const AuthContext = React.createContext();
 const INIT_STATE = {
     user: null,
     products: null,
+    zakaz: null,
 }
 
 const reducer = (state, action) => {
@@ -104,7 +106,7 @@ const AuthProvider = (props) => {
             // console.log(state.user.uid)
            await setDoc(doc( firestore, "users", `${state.user.uid}`), {
                products: {
-                [Date.now()]:newProduct
+                [newProduct.docId]:newProduct
                }
                
            }, {merge:true})
@@ -124,7 +126,32 @@ const AuthProvider = (props) => {
             console.log(error)
         }
     }
+
+    const addZakaz = async (newZakaz) => {
+        try{
+            // console.log(state.user.uid)
+            await addDoc(collection( firestore, "zakaz"), {
+                userId: state.zakaz.uid,
+                ...newZakaz
+            })
+        } catch(error){
+            console.log(error)
+        }
+    }
     
+    const addProductZakaz = async (newZakaz) => {
+        try{
+            // console.log(state.user.uid)
+           await setDoc(doc( firestore, "zakaz", `${state.user.uid}`), {
+               products: {
+                [newZakaz.docId]:newZakaz
+               }
+               
+           }, {merge:true})
+        } catch(error){
+            console.log(error)
+        }
+    }
 
     const getProducts = async () => {
         try{
@@ -149,6 +176,14 @@ const AuthProvider = (props) => {
     }
 
 
+
+    
+    const saveEditProduct = async(product) => {
+        const cityRef = doc(firestore, 'products', product.docId);
+        await setDoc(cityRef, product).then(()=>{console.log("Updated!")}).catch((err)=>console.log(err));
+    }
+
+
     useEffect(() => {
         checkUser()
     },[])
@@ -166,9 +201,12 @@ const AuthProvider = (props) => {
             emailError,
             addProduct,
             getProducts,
+            saveEditProduct,
             products: state.products,
             addProductsCart,
-            handleDelete
+            handleDelete,
+            addZakaz,
+            addProductZakaz
         }}>
             {props.children}
         </AuthContext.Provider>

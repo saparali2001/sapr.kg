@@ -5,13 +5,12 @@ import {getAuth, } from 'firebase/auth'
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBEtJJm-HrDzif2OJrXQOesAerub-oxPUw",
-  authDomain: "sapar-kg.firebaseapp.com",
-  projectId: "sapar-kg",
-  storageBucket: "sapar-kg.appspot.com",
-  messagingSenderId: "650720476922",
-  appId: "1:650720476922:web:d2762ad4a2aa9a6bcfd343",
-  measurementId: "G-99MF693LPD"
+  apiKey: "AIzaSyDI8342vhn7TFqb-ax8bfADSlKYe6x9KGg",
+  authDomain: "pizza-724b7.firebaseapp.com",
+  projectId: "pizza-724b7",
+  storageBucket: "pizza-724b7.appspot.com",
+  messagingSenderId: "1006165653630",
+  appId: "1:1006165653630:web:dc881e8cf114348b79402f"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -19,3 +18,6 @@ const analytics = getAnalytics(app);
 export default app
 export const firestore = getFirestore()
 export const auth = getAuth();
+
+
+  

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import { Grid } from '@mui/material';
-import CardModal from './CardModal';
+
 import AdminCardModal from './AdminCardModal';
 
 const AdminProductCard = () => {
@@ -10,17 +10,14 @@ const AdminProductCard = () => {
     
     useEffect(() => {
         getProducts()
-    }, [])
-    
-    useEffect(() => {
-        getProducts()
-    }, [products])
+    },[])
+
 
     console.log(products)
     console.log(user)
 
     if(!user){
-        return <Navigate to="login"/>
+        return <Navigate to="/login"/>
     }
 
     if(!products){
@@ -31,6 +28,7 @@ const AdminProductCard = () => {
         <Grid container spacing={4}>
             {
                 products.map((item) => {
+                    console.log(item)
                     return item.userId === user.uid? (
                         <Grid key={item.id} item xs={6} sm={6} md={3}>
                         <div className="main-card admin-card">
@@ -62,4 +60,4 @@ const AdminProductCard = () => {
     );
 };
 
-export default AdminProductCard;
+export default AdminProductCard;    
