@@ -52,6 +52,9 @@ export default function BurgerMenu() {
         <Link className="burger-a" to="/admin">
           <MenuItem onClick={handleClose}>Admin panel</MenuItem>
         </Link>
+        <Link className="burger-a" to="/like">
+          <MenuItem onClick={handleClose}>Избранные</MenuItem>
+        </Link>
       </Menu>
     </div>
   );
